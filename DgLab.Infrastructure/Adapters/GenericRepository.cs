@@ -88,13 +88,16 @@ namespace DgLab.Infrastructure.Adapters {
            return await _context.Set<E>().FindAsync(id);
         }
 
-        public async Task UpdateAsync(E entity)
+        public async Task<E> UpdateAsync(E entity)
         {
             if (entity != null)
             {
                 _context.Set<E>().Update(entity);                
                 await this.CommitAsync();
+                return entity;
             }
+            return null;
+
         }
 
         public async Task CommitAsync()
@@ -106,11 +109,10 @@ namespace DgLab.Infrastructure.Adapters {
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        entry.Property("CreatedOn").CurrentValue = DateTime.UtcNow;
+                        entry.Property("NombreEstacion").CurrentValue = Environment.MachineName;
+                        entry.Property("Fechaserver").CurrentValue = DateTime.UtcNow ;
                         break;
-                    case EntityState.Modified:
-                        entry.Property("LastModifiedOn").CurrentValue = DateTime.UtcNow;
-                        break;                   
+                  
                 }
             }
 

@@ -15,29 +15,20 @@ namespace DgLab.Infrastructure.Adapters
         {
         }
 
-        public Task<Rol> ActualizarRol(Rol rol)
+        public async Task<Rol> ActualizarRol(Rol rol)
         {
-            throw new NotImplementedException();
-        }
+            return await UpdateAsync(rol);
+        }       
 
-        public Task EliminarRol(Guid id)
+        public async Task<Rol> GuardarRol(Rol rol)
         {
-            throw new NotImplementedException();
+            return await AddAsync(rol);
         }
+        
 
-        public Task<Rol> GuardarRol(Rol rol)
+        public async Task<Rol> ObtenerRolPorId(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<Rol>> ObtenerRoles()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Rol> ObtenerRolPorId(Guid id)
-        {
-            throw new NotImplementedException();
+            return await GetByIdAsync(id);
         }
     }
 }

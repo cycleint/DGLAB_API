@@ -8,8 +8,11 @@ namespace DgLab.Application.Rol.Dto
 {
     public class RolDto
     {
-        public Guid Id { get; set; }
-        public string Nombre { get; set; }
-        public bool Estado { get; set; }
+        public int Id { get; set; } = default!;
+        public string Nombre { get; set; } = default!;
+        public bool Estado { get; set; } = default!;
+        public int IdUsuario { get; set; } = default!;
+        public string NombreEstacion { get; set; } = default!;
+        public DateTime Fechaserver { get; set; } = default!;
     }
 }

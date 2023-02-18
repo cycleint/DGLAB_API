@@ -7,11 +7,18 @@ using System.Threading.Tasks;
 
 namespace DgLab.Domain.Entities
 {
-    public class Unidad : EntityBase<Guid>
+    public class Unidad : EntityBase<int>
     {
         public string Nombre { get; set; }
-        public string NombreInternacional { get; set; }
-        public int FactorConversion { get; set; }
+        public string NombreInter { get; set; }
+        public decimal Factor { get; set; }
         public bool Estado { get; set; }
+        public int IdUsuario { get; set; }
+        public string NombreEstacion { get; set; }
+        public DateTime Fechaserver { get; set; }
+
+       
+
+        
     }
 }

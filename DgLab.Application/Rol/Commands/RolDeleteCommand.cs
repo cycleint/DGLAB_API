@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using DgLab.Application.Rol.Dto;
+using DgLab.Application.Tecnica.Dto;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -11,6 +13,6 @@ namespace DgLab.Application.Rol.Commands
    
 
     public record RolDeleteCommand(
-     [Required] Guid Id    
-   ) : IRequest;
+     [Required] int Id    
+   ) : IRequest<RolDto>;
 }

@@ -15,29 +15,21 @@ namespace DgLab.Infrastructure.Adapters
         {
         }
 
-        public Task<Requisito> ActualizarRequisito(Requisito requisito)
+        public async Task<Requisito> ActualizarRequisito(Requisito requisito)
         {
-            throw new NotImplementedException();
+            return await UpdateAsync(requisito);      
+        }
+       
+
+        public async Task<Requisito> GuardarRequisito(Requisito requisito)
+        {
+            return await AddAsync(requisito);
         }
 
-        public Task EliminarRequisito(Guid id)
+        public async Task<Requisito> ObtenerRequisitoPorId(int id)
         {
-            throw new NotImplementedException();
+            return await GetByIdAsync(id);
         }
-
-        public Task<Requisito> GuardarRequisito(Requisito requisito)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Requisito> ObtenerRequisitoPorId(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<Requisito>> ObtenerRequisitos()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

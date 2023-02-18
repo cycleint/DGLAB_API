@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace DgLab.Application.Rol.Commands
 { 
     public record RolUpdateCommand(
-      [Required] Guid Id,
+      [Required] int Id,
       [Required] string Nombre,
       [Required] bool Estado
     ) : IRequest<RolDto>;

@@ -15,29 +15,20 @@ namespace DgLab.Infrastructure.Adapters
         {
         }
 
-        public Task<Unidad> ActualizarUnidad(Unidad unidad)
+        public async Task<Unidad> ActualizarUnidad(Unidad unidad)
         {
-            throw new NotImplementedException();
+            return await UpdateAsync(unidad);
         }
 
-        public Task EliminarUnidad(Guid id)
-        {
-            throw new NotImplementedException();
+        public async Task<Unidad> GuardarUnidad(Unidad unidad)
+        {            
+                return await AddAsync(unidad);            
         }
+        
 
-        public Task<Unidad> GuardarUnidad(Unidad unidad)
+        public async Task<Unidad> ObtenerUnidadPorId(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<Unidad>> ObtenerUnidades()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Unidad> ObtenerUnidadPorId(Guid id)
-        {
-            throw new NotImplementedException();
+           return await GetByIdAsync(id);
         }
     }
 }

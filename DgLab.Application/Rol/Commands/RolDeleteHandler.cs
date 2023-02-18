@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using DgLab.Application.Person.Commands;
+using DgLab.Application.Rol.Dto;
 using DgLab.Domain.Services;
 using MediatR;
 using System;
@@ -10,19 +10,22 @@ using System.Threading.Tasks;
 
 namespace DgLab.Application.Rol.Commands
 {
-    public class RolDeleteHandler : AsyncRequestHandler<RolDeleteCommand>
+    public class RolDeleteHandler : IRequestHandler<RolDeleteCommand,RolDto>
     {
-        private readonly RolService _RolService;
-       
+        private readonly RolService _rolService;
+        private readonly IMapper _mapper;
 
         public RolDeleteHandler(RolService rolService, IMapper mapper)
         {
-            _RolService = rolService ?? throw new ArgumentNullException(nameof(rolService));           
+            _rolService = rolService ?? throw new ArgumentNullException(nameof(rolService));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        protected override Task Handle(RolDeleteCommand request, CancellationToken cancellationToken)
+        public async Task<RolDto> Handle(RolDeleteCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var rol = await _rolService.EliminarRolPorId( request.Id);
+
+            return _mapper.Map<RolDto>(rol);
         }
     }
 }
