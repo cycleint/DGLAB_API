@@ -36,32 +36,12 @@ class IntegrationTestBuilder : WebApplicationFactory<Program>
                     options.UseInMemoryDatabase("Testing", rootDb));
 
         });
-
-        SeedDatabase(builder.Build().Services);
+      
 
         return base.CreateHost(builder);
 
 
     }
 
-    void SeedDatabase(IServiceProvider services)
-    {
-        var People = new List<Person>
-            {
-                new Person
-                {
-                    Id = _id, Email = "JohnDoe@gmail.com", FirstName = "John",
-                    LastName = "Doe", DateOfBirth = DateTime.Now.AddYears(-20)
-                }
-            };
-
-        using (var scope = services.CreateScope())
-        {
-            var personRepo = scope.ServiceProvider.GetRequiredService<IGenericRepository<Person>>();
-            foreach (var person in People)
-            {
-                personRepo.AddAsync(person).Wait();
-            }
-        }
-    }
+    
 }

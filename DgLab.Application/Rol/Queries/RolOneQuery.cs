@@ -10,5 +10,5 @@ using System.Threading.Tasks;
 
 namespace DgLab.Application.Rol.Queries
 {
-    public record RolOneQuery([Required] Guid Id) : IRequest<RolDto>;
+    public record RolOneQuery([Required] int Id) : IRequest<RolDto>;
 }

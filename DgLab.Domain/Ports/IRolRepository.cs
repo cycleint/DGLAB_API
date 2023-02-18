@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 namespace DgLab.Domain.Ports
 {
     public interface IRolRepository : IGenericRepository<Rol>
-    {
-        public Task<List<Rol>> ObtenerRoles();
+    {       
         public Task<Rol> GuardarRol(Rol rol);
         public Task<Rol> ActualizarRol(Rol rol);
-        public Task<Rol> ObtenerRolPorId(Guid id);
-        public Task EliminarRol(Guid id);
+        public Task<Rol> ObtenerRolPorId(int id);
+      
     }
 }

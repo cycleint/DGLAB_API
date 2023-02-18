@@ -15,7 +15,7 @@ namespace DgLab.Domain.Ports
 
         Task<E> GetByIdAsync(object id);
         Task<E> AddAsync(E entity);
-        Task UpdateAsync(E entity);
+        Task<E> UpdateAsync(E entity);
         Task DeleteAsync(E entity);
 
     }

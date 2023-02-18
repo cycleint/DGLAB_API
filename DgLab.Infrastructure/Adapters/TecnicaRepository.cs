@@ -15,29 +15,21 @@ namespace DgLab.Infrastructure.Adapters
         {
         }
 
-        public Task<Tecnica> ActualizarTecnica(Tecnica tecnica)
+        public async Task<Tecnica> ActualizarTecnica(Tecnica tecnica)
         {
-            throw new NotImplementedException();
+            return await UpdateAsync(tecnica);
+        }       
+
+        public async Task<Tecnica> GuardarTecnica(Tecnica tecnica)
+        {
+            return await AddAsync(tecnica);
         }
 
-        public Task EliminarTecnica(Guid id)
+        public async Task<Tecnica> ObtenerTecnicaPorId(int id)
         {
-            throw new NotImplementedException();
+            return await GetByIdAsync(id);
         }
 
-        public Task<Tecnica> GuardarTecnica(Tecnica tecnica)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Tecnica> ObtenerTecnicaPorId(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<Tecnica>> ObtenerTecnicas()
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace DgLab.Domain.Entities
 {
-    public class Rol : EntityBase<Guid>
+    public class Rol : EntityBase<int>
     {
-        public string Nombre { get; set; }
+        public string Nombre { get; set; }      
         public bool Estado { get; set; }
+        public int IdUsuario { get; set; }
+        public string NombreEstacion { get; set; }
+        public DateTime Fechaserver { get; set; }
     }
 }

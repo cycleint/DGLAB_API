@@ -20,13 +20,13 @@ namespace DgLab.Api.Controllers
         public async Task<List<RolDto>> Get() => await _mediator.Send(new RolQuery());
 
         [HttpGet("{id}")]
-        public async Task<RolDto> Get(Guid id) => await _mediator.Send(new RolOneQuery(id));
+        public async Task<RolDto> Get(int id) => await _mediator.Send(new RolOneQuery(id));
 
         [HttpPost]
         public async Task<RolDto> Post(RolCreateCommand rol) => await _mediator.Send(rol);
 
         [HttpPut("{id}")]
-        public async Task<RolDto> Put(RolCreateCommand rol, Guid id)
+        public async Task<RolDto> Put(RolCreateCommand rol, int id)
         {
 
             var rolUpdateCommand = new RolUpdateCommand(
@@ -37,6 +37,6 @@ namespace DgLab.Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task Delete(Guid id) => await _mediator.Send(new RolDeleteCommand(id));
+        public async Task<RolDto> Delete(int id) => await _mediator.Send(new RolDeleteCommand(id));
     }
 }

@@ -12,17 +12,25 @@ namespace DgLab.Application.Rol.Commands
 {
     public class RolUpdateHandler : IRequestHandler<RolUpdateCommand, RolDto>
     {
-        private readonly RolService _RolService;
+        private readonly RolService _rolService;
         private readonly IMapper _mapper;
         public RolUpdateHandler(RolService rolService, IMapper mapper)
         {
-            _RolService = rolService ?? throw new ArgumentNullException(nameof(rolService));
+            _rolService = rolService ?? throw new ArgumentNullException(nameof(rolService));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        public Task<RolDto> Handle(RolUpdateCommand request, CancellationToken cancellationToken)
+        public async Task<RolDto> Handle(RolUpdateCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var rol = await _rolService.ActualizarRol(
+                 new DgLab.Domain.Entities.Rol
+                 {
+                     Id= request.Id,
+                     Nombre = request.Nombre,
+                     Estado = request.Estado,                    
+                 });
+
+            return _mapper.Map<RolDto>(rol);
         }
     }
 }

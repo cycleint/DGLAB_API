@@ -9,10 +9,9 @@ namespace DgLab.Domain.Ports
 {
     public interface IUnidadRepository : IGenericRepository<Unidad>
     {
-        public Task<List<Unidad>> ObtenerUnidades();
+       
         public Task<Unidad> GuardarUnidad(Unidad unidad);
         public Task<Unidad> ActualizarUnidad(Unidad unidad);
-        public Task<Unidad> ObtenerUnidadPorId(Guid id);
-        public Task EliminarUnidad(Guid id);
+        public Task<Unidad> ObtenerUnidadPorId(int id);        
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DgLab.Application.Rol.Dto;
+using DgLab.Domain.Entities;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace DgLab.Application.Rol.Commands
 {
     public record RolCreateCommand(
        [Required] string Nombre,
-       [Required] bool Estado     
+       [Required] bool Estado,
+       [Required] int IdUsuario
    ) : IRequest<RolDto>;
 }

@@ -27,8 +27,7 @@ namespace DgLab.Infrastructure.Context
                 return;
             }
 
-            modelBuilder.HasDefaultSchema(_config.GetValue<string>("SchemaName"));
-            modelBuilder.Entity<Person>();
+            modelBuilder.HasDefaultSchema(_config.GetValue<string>("SchemaName"));          
             modelBuilder.Entity<Alarma>();
             modelBuilder.Entity<Area>();
             modelBuilder.Entity<Dia>();
@@ -48,15 +47,15 @@ namespace DgLab.Infrastructure.Context
             modelBuilder.Entity<Unidad>();
 
 
-            foreach (var entityType in modelBuilder.Model.GetEntityTypes())
-            {
-                var t = entityType.ClrType;
-                if (typeof(DomainEntity).IsAssignableFrom(t))
-                {
-                    modelBuilder.Entity(entityType.Name).Property<DateTime>("CreatedOn").HasDefaultValueSql("GETDATE()");
-                    modelBuilder.Entity(entityType.Name).Property<DateTime>("LastModifiedOn").HasDefaultValueSql("GETDATE()");
-                }
-            }
+            //foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+            //{
+            //    var t = entityType.ClrType;
+            //    if (typeof(DomainEntity).IsAssignableFrom(t))
+            //    {
+            //        modelBuilder.Entity(entityType.Name).Property<DateTime>("CreatedOn").HasDefaultValueSql("GETDATE()");
+            //        modelBuilder.Entity(entityType.Name).Property<DateTime>("LastModifiedOn").HasDefaultValueSql("GETDATE()");
+            //    }
+            //}
 
             base.OnModelCreating(modelBuilder);
         }
