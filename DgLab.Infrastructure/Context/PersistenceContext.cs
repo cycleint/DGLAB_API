@@ -45,6 +45,7 @@ namespace DgLab.Infrastructure.Context
             modelBuilder.Entity<Sede>();
             modelBuilder.Entity<Tecnica>();
             modelBuilder.Entity<Unidad>();
+            modelBuilder.Entity<Usuario>();
 
 
             //foreach (var entityType in modelBuilder.Model.GetEntityTypes())
