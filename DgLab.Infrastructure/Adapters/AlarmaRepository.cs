@@ -15,29 +15,19 @@ namespace DgLab.Infrastructure.Adapters
         {
         }
 
-        public Task<Alarma> ActualizarAlarma(Alarma alarma)
+        public async Task<Alarma> ActualizarAlarma(Alarma alarma)
         {
-            throw new NotImplementedException();
+            return await UpdateAsync(alarma);
         }
 
-        public Task EliminarAlarma(Guid id)
+        public async Task<Alarma> GuardarAlarma(Alarma alarma)
         {
-            throw new NotImplementedException();
+            return await AddAsync(alarma);
         }
 
-        public Task<Alarma> GuardarAlarma(Alarma alarma)
+        public async Task<Alarma> ObtenerAlarmaPorId(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Alarma> ObtenerAlarmaPorId(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<Alarma>> ObtenerAlarmas()
-        {
-            throw new NotImplementedException();
+            return await GetByIdAsync(id);
         }
     }
 }

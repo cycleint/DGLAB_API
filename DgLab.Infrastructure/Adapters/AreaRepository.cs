@@ -15,29 +15,19 @@ namespace DgLab.Infrastructure.Adapters
         {
         }
 
-        public Task<Area> ActualizarArea(Area area)
+        public async Task<Area> ActualizarArea(Area area)
         {
-            throw new NotImplementedException();
+            return await UpdateAsync(area);
         }
 
-        public Task EliminarArea(Guid id)
+        public async Task<Area> GuardarArea(Area area)
         {
-            throw new NotImplementedException();
+            return await AddAsync(area);
         }
 
-        public Task<Area> GuardarArea(Area area)
+        public async Task<Area> ObtenerAreaPorId(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Area> ObtenerAreaPorId(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<Area>> ObtenerAreas()
-        {
-            throw new NotImplementedException();
+            return await GetByIdAsync(id);
         }
     }
 }

@@ -30,11 +30,11 @@ namespace DgLab.Api.Controllers
         public async Task<RequisitoDto> Get(int id) => await _mediator.Send(new RequisitoOneQuery(id));
 
         [HttpPut("{id}")]
-        public async Task<RequisitoDto> Put(RequisitoCreateCommand tecnica, int id)
+        public async Task<RequisitoDto> Put(RequisitoCreateCommand requisito, int id)
         {
 
             var requisitoUpdateRequest = new RequisitoUpdateCommand(
-                id, tecnica.Nombre, tecnica.Descripcion, tecnica.Estado
+                id, requisito.Nombre, requisito.Descripcion, requisito.Estado
             );
 
             return await _mediator.Send(requisitoUpdateRequest);

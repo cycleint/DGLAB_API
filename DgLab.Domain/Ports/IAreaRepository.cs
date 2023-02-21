@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 namespace DgLab.Domain.Ports
 {
     public interface IAreaRepository : IGenericRepository<Area>
-    {
-        public Task<List<Area>> ObtenerAreas();
+    {      
         public Task<Area> GuardarArea(Area area);
         public Task<Area> ActualizarArea(Area area);
-        public Task<Area> ObtenerAreaPorId(Guid id);
-        public Task EliminarArea(Guid id);
+        public Task<Area> ObtenerAreaPorId(int id);
+       
     }
 }
