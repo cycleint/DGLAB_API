@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 namespace DgLab.Domain.Ports
 {
     public interface IGrupoEtarioRepository : IGenericRepository<GrupoEtario>
-    {
-        public Task<List<GrupoEtario>> ObtenerGrupoEtarios();
+    {       
         public Task<GrupoEtario> GuardarGrupoEtario(GrupoEtario grupoEtario);
         public Task<GrupoEtario> ActualizarGrupoEtario(GrupoEtario grupoEtario);
-        public Task<GrupoEtario> ObtenerGrupoEtarioPorId(Guid id);
-        public Task EliminarGrupoEtario(Guid id);
+        public Task<GrupoEtario> ObtenerGrupoEtarioPorId(int id);
+        
     }
 }

@@ -15,29 +15,19 @@ namespace DgLab.Infrastructure.Adapters
         {
         }
 
-        public Task<GrupoEtario> ActualizarGrupoEtario(GrupoEtario grupoEtario)
+        public async Task<GrupoEtario> ActualizarGrupoEtario(GrupoEtario grupoEtario)
         {
-            throw new NotImplementedException();
+            return await UpdateAsync(grupoEtario);
         }
 
-        public Task EliminarGrupoEtario(Guid id)
+        public async Task<GrupoEtario> GuardarGrupoEtario(GrupoEtario grupoEtario)
         {
-            throw new NotImplementedException();
+            return await AddAsync(grupoEtario);
         }
 
-        public Task<GrupoEtario> GuardarGrupoEtario(GrupoEtario grupoEtario)
+        public async Task<GrupoEtario> ObtenerGrupoEtarioPorId(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<GrupoEtario> ObtenerGrupoEtarioPorId(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<GrupoEtario>> ObtenerGrupoEtarios()
-        {
-            throw new NotImplementedException();
+            return await GetByIdAsync(id);
         }
     }
 }
