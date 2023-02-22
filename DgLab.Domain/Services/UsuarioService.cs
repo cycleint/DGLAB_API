@@ -21,6 +21,24 @@ namespace DgLab.Domain.Services
 
         public async Task<Usuario> GuardarUsuario(Usuario usuario)
         {
+            var usuarioExistente = await _repository.ObtenerUsuarioPorCorreo(usuario.Correo);
+            if (usuarioExistente != null) {
+                throw new UsuarioExisteCorreoException($"Ya existe un usuario con correo {usuario.Correo}");
+            }
+
+            var usuarioExistenteIden = await _repository.ObtenerUsuarioPorIdentificacion(usuario.Identificacion);
+            if (usuarioExistenteIden != null)
+            {
+                throw new UsuarioExisteIdentificacionException($"Ya existe un usuario con identificacion {usuario.Identificacion}");
+            }
+            var usuarioExistenteCod = await _repository.ObtenerUsuarioPorCodigo(usuario.Codigo);
+            if (usuarioExistenteCod != null)
+            {
+                throw new UsuarioExisteCodigoException($"Ya existe un usuario con código {usuario.Codigo}");
+            }
+
+
+
             usuario.Contrasena=  encriptarClave(usuario.Contrasena);
             return await _repository.GuardarUsuario(usuario);
         }
@@ -53,7 +71,7 @@ namespace DgLab.Domain.Services
         }
 
         public async Task<Usuario> InicioSesion(string correo, string contrasena) {
-            var usuario = await _repository.ObtenerUsuarioPorCorreo(correo);
+            var usuario = await _repository.ObtenerUsuarioPorCorreoUsuario(correo);
             if (usuario is null) {
                 throw new UsuarioIncorrectoException("datos incorrectos");
             }

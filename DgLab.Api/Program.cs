@@ -31,6 +31,17 @@ builder.Services.AddDbContext<PersistenceContext>(opt =>
     });
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "AllowOrigin",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:4200")
+                                .AllowAnyHeader()
+                                .WithMethods("POST", "GET", "PUT","DELETE");
+        });
+});
+
 builder.Services.AddHealthChecks().AddSqlServer(config["ConnectionStrings:database"]);
 
 builder.Services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true));
@@ -55,6 +66,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DgLab Api"));
 }
 
+
+app.UseHttpsRedirection();
+app.UseCors("AllowOrigin");
 app.UseRouting().UseHttpMetrics().UseEndpoints(endpoints =>
 {  
     endpoints.MapMetrics();
@@ -62,7 +76,6 @@ app.UseRouting().UseHttpMetrics().UseEndpoints(endpoints =>
 });
 
 app.UseHttpLogging();
-app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();

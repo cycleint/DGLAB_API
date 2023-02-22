@@ -33,11 +33,23 @@ namespace DgLab.Infrastructure.Adapters
             return await GetByIdAsync(id);
         }
 
+        public async Task<Usuario> ObtenerUsuarioPorCodigo(string codigo)
+        {
+            return await _context.Set<Usuario>().FirstOrDefaultAsync(usuario => usuario.Codigo == codigo);
+        }
 
+        public async Task<Usuario> ObtenerUsuarioPorCorreoUsuario(string correo)
+        {
+            return await _context.Set<Usuario>().FirstOrDefaultAsync(usuario=> usuario.Correo==correo || usuario.Codigo==correo);
+        }
 
         public async Task<Usuario> ObtenerUsuarioPorCorreo(string correo)
         {
-            return await _context.Set<Usuario>().FirstOrDefaultAsync(usuario=> usuario.Correo==correo || usuario.Codigo==correo);
+            return await _context.Set<Usuario>().FirstOrDefaultAsync(usuario => usuario.Correo == correo );
+        }
+
+        public async Task<Usuario> ObtenerUsuarioPorIdentificacion(string identificacion) {
+            return await _context.Set<Usuario>().FirstOrDefaultAsync(usuario => usuario.Identificacion == identificacion);
         }
     }
 }
