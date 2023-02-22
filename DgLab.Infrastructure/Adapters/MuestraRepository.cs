@@ -15,29 +15,21 @@ namespace DgLab.Infrastructure.Adapters
         {
         }
 
-        public Task<Muestra> ActualizarMuestra(Muestra muestra)
+        public async Task<Muestra> ActualizarMuestra(Muestra muestra)
         {
-            throw new NotImplementedException();
+            return await UpdateAsync(muestra);
         }
 
-        public Task EliminarMuestra(Guid id)
+        public async Task<Muestra> GuardarMuestra(Muestra muestra)
         {
-            throw new NotImplementedException();
+            return await AddAsync(muestra);
         }
 
-        public Task<Muestra> GuardarMuestra(Muestra muestra)
+        public async Task<Muestra> ObtenerMuestraPorId(int id)
         {
-            throw new NotImplementedException();
+            return await GetByIdAsync(id);
         }
 
-        public Task<Muestra> ObtenerMuestraPorId(Guid id)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task<List<Muestra>> ObtenerMuestras()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

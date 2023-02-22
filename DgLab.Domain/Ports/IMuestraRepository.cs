@@ -9,10 +9,8 @@ namespace DgLab.Domain.Ports
 {
     public interface IMuestraRepository : IGenericRepository<Muestra>
     {
-        public Task<List<Muestra>> ObtenerMuestras();
         public Task<Muestra> GuardarMuestra(Muestra muestra);
         public Task<Muestra> ActualizarMuestra(Muestra muestra);
-        public Task<Muestra> ObtenerMuestraPorId(Guid id);
-        public Task EliminarMuestra(Guid id);
+        public Task<Muestra> ObtenerMuestraPorId(int id);      
     }
 }
