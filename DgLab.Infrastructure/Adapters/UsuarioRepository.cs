@@ -24,9 +24,20 @@ namespace DgLab.Infrastructure.Adapters
             return await AddAsync(usuario);
         }
 
+        public async Task<Usuario> ActualizarUsuario(Usuario usuario)
+        {
+            return await UpdateAsync(usuario);
+        }
+        public async Task<Usuario> ObtenerUsuarioPorId(int id)
+        {
+            return await GetByIdAsync(id);
+        }
+
+
+
         public async Task<Usuario> ObtenerUsuarioPorCorreo(string correo)
         {
-            return await _context.Set<Usuario>().FirstOrDefaultAsync(x=>x.Correo==correo);
+            return await _context.Set<Usuario>().FirstOrDefaultAsync(usuario=> usuario.Correo==correo || usuario.Codigo==correo);
         }
     }
 }

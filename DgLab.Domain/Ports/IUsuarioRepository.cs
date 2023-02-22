@@ -10,6 +10,8 @@ namespace DgLab.Domain.Ports
     public interface IUsuarioRepository : IGenericRepository<Usuario>
     {
         public Task<Usuario> GuardarUsuario(Usuario usuario);
+        public Task<Usuario> ActualizarUsuario(Usuario usuario);
+        public Task<Usuario> ObtenerUsuarioPorId(int id);
         public Task<Usuario> ObtenerUsuarioPorCorreo(string correo);
     }
 }

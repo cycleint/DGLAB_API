@@ -26,11 +26,13 @@ namespace DgLab.Application.Usuario.Commands
             var usuario = await _usuarioService.GuardarUsuario(
                   new DgLab.Domain.Entities.Usuario
                   {
-                      Identificacion = request.Identificacion,
-                      Nombre = request.Nombre,
-                      Apellido= request.Apellido,
+                        Identificacion = request.Identificacion,
+                        Nombre = request.Nombre,
+                        Apellido= request.Apellido,
+                        Codigo= request.Codigo,
                         Correo =request.Correo,
                         Firma =request.Firma,
+                        Foto= request.Foto,
                         Contrasena =request.Contrasena,
                         Estado=request.Estado,
                         IdUsuario = request.IdUsuario

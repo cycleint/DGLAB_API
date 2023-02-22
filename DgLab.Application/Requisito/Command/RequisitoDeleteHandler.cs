@@ -23,7 +23,6 @@ namespace DgLab.Application.Requisito.Command
         public async Task<RequisitoDto> Handle(RequisitoDeleteCommand request, CancellationToken cancellationToken)
         {
             var requisito = await _requisitoService.EliminarRequisitoPorId( request.Id);
-
             return _mapper.Map<RequisitoDto>(requisito);
         }
     }

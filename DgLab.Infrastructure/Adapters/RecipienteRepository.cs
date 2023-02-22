@@ -15,29 +15,19 @@ namespace DgLab.Infrastructure.Adapters
         {
         }
 
-        public Task<Recipiente> ActualizarRecipiente(Recipiente recipiente)
+        public async Task<Recipiente> ActualizarRecipiente(Recipiente recipiente)
         {
-            throw new NotImplementedException();
+            return await UpdateAsync(recipiente);
         }
 
-        public Task EliminarRecipiente(Guid id)
+        public async Task<Recipiente> GuardarRecipiente(Recipiente recipiente)
         {
-            throw new NotImplementedException();
+            return await AddAsync(recipiente);
         }
 
-        public Task<Recipiente> GuardarRecipiente(Recipiente recipiente)
+        public async Task<Recipiente> ObtenerRecipientePorId(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Recipiente> ObtenerRecipientePorId(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<Recipiente>> ObtenerRecipientes()
-        {
-            throw new NotImplementedException();
+            return await GetByIdAsync(id);
         }
     }
 }

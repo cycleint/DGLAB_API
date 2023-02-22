@@ -25,6 +25,33 @@ namespace DgLab.Domain.Services
             return await _repository.GuardarUsuario(usuario);
         }
 
+        public async Task<Usuario> ActualizarUsuario(Usuario usuario)
+        {
+            var entity = await ObtenerUsuarioPorId(usuario.Id);
+            if (entity is null) { throw new ArgumentNullException(nameof(entity)); }
+            entity.Identificacion= usuario.Identificacion;
+            entity.Nombre= usuario.Nombre;
+            entity.Apellido= usuario.Apellido;
+            entity.Codigo= usuario.Codigo;
+            entity.Correo= usuario.Correo;
+            entity.Firma= usuario.Firma;
+            entity.Foto= usuario.Foto;
+            entity.Estado = usuario.Estado; ;
+            return await _repository.ActualizarUsuario(entity);
+        }
+
+        public async Task<Usuario> ObtenerUsuarioPorId(int id)
+        {
+            return await _repository.ObtenerUsuarioPorId(id);
+        }
+
+        public async Task<Usuario> EliminarUsuarioPorId(int id)
+        {
+            Usuario usuario = await ObtenerUsuarioPorId(id);
+            usuario.Estado = false;
+            return await _repository.ActualizarUsuario(usuario);
+        }
+
         public async Task<Usuario> InicioSesion(string correo, string contrasena) {
             var usuario = await _repository.ObtenerUsuarioPorCorreo(correo);
             if (usuario is null) {
@@ -33,6 +60,10 @@ namespace DgLab.Domain.Services
 
             if (desencriptarClave(usuario.Contrasena) != contrasena) {
                 throw new UsuarioIncorrectoException("datos incorrectos");
+            }
+
+            if (!usuario.Estado) {
+                throw new UsuarioDeshabilitadoException("Usuario deshabilitado");
             }
             return usuario;
             

@@ -110,7 +110,7 @@ namespace DgLab.Infrastructure.Adapters {
                 {
                     case EntityState.Added:
                         entry.Property("NombreEstacion").CurrentValue = Environment.MachineName;
-                        entry.Property("Fechaserver").CurrentValue = DateTime.UtcNow ;
+                        entry.Property("Fechaserver").CurrentValue = DateTime.Now ;
                         break;
                   
                 }

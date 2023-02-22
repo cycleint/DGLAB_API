@@ -1,14 +1,14 @@
-﻿using DgLab.Domain.Entities.Base;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DgLab.Domain.Entities
+namespace DgLab.Application.Recipiente.Dto
 {
-    public class Recipiente:EntityBase<int>
+    public class RecipienteDto
     {
+        public int Id { get; set; }
         public string Nombre { get; set; }
         public string Imagen { get; set; }
         public int IdUnidad { get; set; }

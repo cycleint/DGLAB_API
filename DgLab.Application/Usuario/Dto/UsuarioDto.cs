@@ -12,8 +12,10 @@ namespace DgLab.Application.Usuario.Dto
         public string Identificacion { get; set; } = default!;
         public string Nombre { get; set; } = default!;
         public string Apellido { get; set; } = default!;
+        public string Codigo { get; set; }=default!;
         public string Correo { get; set; } = default!;
-        public string Firma { get; set; } = default!;      
+        public string Firma { get; set; } = default!;
+        public string Foto { get; set; } = default!;
         public bool Estado { get; set; } = default!;
         public int IdUsuario { get; set; } = default!;
         public string NombreEstacion { get; set; } = default!;

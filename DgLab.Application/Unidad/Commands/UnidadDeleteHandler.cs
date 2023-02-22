@@ -24,7 +24,6 @@ namespace DgLab.Application.Unidad.Commands
         public async Task<UnidadDto> Handle(UnidadDeleteCommand request, CancellationToken cancellationToken)
         {
             var unidad = await _unidadService.EliminarUnidadPorId(request.Id);
-
             return _mapper.Map<UnidadDto>(unidad);
         }
     }

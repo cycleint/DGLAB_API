@@ -12,23 +12,21 @@ using System.Threading.Tasks;
 
 namespace DgLab.Application.Usuario.Queries
 {
-    public class UsuarioQueryHandler : IRequestHandler<UsuarioQuery, List<UsuarioDto>>
+    public class UsuarioOneQueryHandler : IRequestHandler<UsuarioOneQuery, UsuarioDto>
     {
         private readonly IDbConnection _dapperSource;
         private readonly IMapper _mapper;
 
-        public UsuarioQueryHandler(IDbConnection dapperSource, IMapper mapper)
+        public UsuarioOneQueryHandler(IDbConnection dapperSource, IMapper mapper)
         {
             _dapperSource = dapperSource ?? throw new ArgumentNullException(nameof(dapperSource));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
-        public async Task<List<UsuarioDto>> Handle(UsuarioQuery request, CancellationToken cancellationToken)
+        public async Task<UsuarioDto> Handle(UsuarioOneQuery request, CancellationToken cancellationToken)
         {
-            var usuarios = await _dapperSource.QueryAsync
-                   ("SELECT Id,Identificacion,Nombre,Apellido,Codigo,Correo,Firma,Foto,Estado,IdUsuario,NombreEstacion,Fechaserver FROM Per.Usuario"
-                   );
-
-            return _mapper.Map<List<UsuarioDto>>(usuarios);
+            var usuario = await _dapperSource.QuerySingleOrDefaultAsync<DgLab.Domain.Entities.Usuario>
+               ("SELECT Id,Identificacion,Nombre,Apellido,Codigo,Correo,Firma,Foto,Estado,IdUsuario,NombreEstacion,Fechaserver FROM Per.Usuario where Id = @Id", new { Id = request.Id });
+            return _mapper.Map<UsuarioDto>(usuario);
         }
     }
 }
