@@ -24,9 +24,16 @@ namespace DgLab.Application.Area.Queries
         }
         public async Task<List<AreaDto>> Handle(AreaQuery request, CancellationToken cancellationToken)
         {
-            var areas = await _dapperSource.QueryAsync
-                 ("SELECT  Id,Codigo,Abreviatura,Nombre,NombreIngles,IdTipo,ValidacionParcial,Color,Estado,IdUsuario,NombreEstacion,Fechaserver" +
-                 " FROM Per.Area");
+            string query = "SELECT   Per.Area.Id,Codigo,Abreviatura, Per.Area.Nombre,NombreIngles,IdTipo,ValidacionParcial,Color,Estado,IdUsuario,NombreEstacion,Fechaserver,Per.Parametro.Id ,Per.Parametro.Tipo ,Per.Parametro.Nombre  ,Per.Parametro.Valor " +
+                "FROM Per.Area  " +
+                "inner join Per.Parametro On Per.Parametro.Valor= Per.Area.IdTipo AND Per.Parametro.Tipo='T_ARE'";
+            var areas = await _dapperSource.QueryAsync<DgLab.Domain.Entities.Area,
+                                        DgLab.Domain.Entities.Parametro,
+                                        DgLab.Domain.Entities.Area>
+                 (query, (area, tipo) => { 
+                        area.Tipo=tipo;
+                     return area;
+                 });
 
             return _mapper.Map<List<AreaDto>>(areas);
         }

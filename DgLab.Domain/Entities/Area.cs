@@ -23,5 +23,7 @@ namespace DgLab.Domain.Entities
         public string NombreEstacion { get; set; }
         public DateTime Fechaserver { get; set; }
 
+        public Parametro Tipo { get; set; }
+
     }
 }

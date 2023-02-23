@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DgLab.Application.Parametro.Dto;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -22,5 +23,7 @@ namespace DgLab.Application.Area.Dto
         public int IdUsuario { get; set; } = default!;
         public string NombreEstacion { get; set; } = default!;
         public DateTime Fechaserver { get; set; } = default!;
+
+        public ParametroDto Tipo { get; set; }
     }
 }
