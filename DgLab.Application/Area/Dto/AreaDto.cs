@@ -15,7 +15,7 @@ namespace DgLab.Application.Area.Dto
         public string Abreviatura { get; set; } = default!;
         public string Nombre { get; set; } = default!;
         public string NombreIngles { get; set; } = default!;
-        public int Tipo { get; set; } = default!;
+        public int IdTipo { get; set; } = default!;
         public bool ValidacionParcial { get; set; } = default!;
         public string Color { get; set; } = default!;
         public bool Estado { get; set; } = default!;

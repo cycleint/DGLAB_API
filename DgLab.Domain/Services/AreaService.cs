@@ -31,7 +31,7 @@ namespace DgLab.Domain.Services
             entity.Abreviatura= area.Abreviatura;
             entity.Nombre= area.Nombre;
             entity.NombreIngles=area.NombreIngles;
-            entity.Tipo= area.Tipo;
+            entity.IdTipo = area.IdTipo;
             entity.ValidacionParcial= area.ValidacionParcial;
             entity.Color= area.Color;
             entity.Estado= area.Estado;            

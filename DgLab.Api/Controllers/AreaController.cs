@@ -31,7 +31,7 @@ namespace DgLab.Api.Controllers
         public async Task<AreaDto> Put(AreaCreateCommand area, int id)
         {
             var areaUpdateRequest = new AreaUpdateCommand(
-               id,area.Codigo,area.Abreviatura,area.Nombre,area.NombreIngles,area.Tipo,area.ValidacionParcial,area.Codigo,area.Estado
+               id,area.Codigo,area.Abreviatura,area.Nombre,area.NombreIngles,area.IdTipo, area.ValidacionParcial,area.Codigo,area.Estado
             );
 
             return await _mediator.Send(areaUpdateRequest);

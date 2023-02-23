@@ -31,7 +31,7 @@ namespace DgLab.Application.Area.Commands
                      Abreviatura = request.Abreviatura,
                      Nombre = request.Nombre,
                      NombreIngles = request.NombreIngles,
-                     Tipo = request.Tipo,
+                     IdTipo = request.IdTipo,
                      ValidacionParcial = request.ValidacionParcial,
                      Color = request.Color,
                      Estado = request.Estado

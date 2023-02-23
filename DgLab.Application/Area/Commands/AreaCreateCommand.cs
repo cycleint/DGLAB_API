@@ -15,7 +15,7 @@ namespace DgLab.Application.Area.Commands
          [Required] string Abreviatura,
          [Required] string Nombre,
          [Required] string NombreIngles,
-         [Required] int Tipo,
+         [Required] int IdTipo,
          [Required] bool ValidacionParcial,
          [Required] string Color,
          [Required] bool Estado,

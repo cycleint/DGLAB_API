@@ -25,7 +25,7 @@ namespace DgLab.Application.Area.Queries
         public async Task<List<AreaDto>> Handle(AreaQuery request, CancellationToken cancellationToken)
         {
             var areas = await _dapperSource.QueryAsync
-                 ("SELECT  Id,Codigo,Abreviatura,Nombre,NombreIngles,Tipo,ValidacionParcial,Color,Estado,IdUsuario,NombreEstacion,Fechaserver" +
+                 ("SELECT  Id,Codigo,Abreviatura,Nombre,NombreIngles,IdTipo,ValidacionParcial,Color,Estado,IdUsuario,NombreEstacion,Fechaserver" +
                  " FROM Per.Area");
 
             return _mapper.Map<List<AreaDto>>(areas);

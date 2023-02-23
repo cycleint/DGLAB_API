@@ -15,12 +15,13 @@ namespace DgLab.Domain.Entities
         public string Abreviatura { get; set; }
         public string Nombre { get; set; }
         public string NombreIngles { get; set; }
-        public int Tipo { get; set; }
+        public int IdTipo { get; set; }
         public bool ValidacionParcial { get; set; }
         public string Color { get; set; }
         public bool Estado { get; set; }
         public int IdUsuario { get; set; }
         public string NombreEstacion { get; set; }
         public DateTime Fechaserver { get; set; }
+
     }
 }

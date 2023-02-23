@@ -28,6 +28,7 @@ namespace DgLab.Infrastructure.Extensions {
             svc.AddTransient(typeof(ITecnicaRepository), typeof(TecnicaRepository));
             svc.AddTransient(typeof(IUnidadRepository), typeof(UnidadRepository));
             svc.AddTransient(typeof(IUsuarioRepository), typeof(UsuarioRepository));
+            svc.AddTransient(typeof(IParametroRepositoty), typeof(ParametroRepositoty));
             svc.AddTransient<IDbConnection>((sp) => new SqlConnection(config.GetConnectionString("database")));
             return svc;
         }
