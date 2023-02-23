@@ -29,7 +29,7 @@ namespace DgLab.Infrastructure.Context
 
             modelBuilder.HasDefaultSchema(_config.GetValue<string>("SchemaName"));          
             modelBuilder.Entity<Alarma>();
-            modelBuilder.Entity<Area>();
+            modelBuilder.Entity<Area>().Ignore(E=>E.Tipo);
             modelBuilder.Entity<Dia>();
             modelBuilder.Entity<Grupo>();
             modelBuilder.Entity<GrupoEtario>();
@@ -47,7 +47,7 @@ namespace DgLab.Infrastructure.Context
             modelBuilder.Entity<Unidad>();
             modelBuilder.Entity<Usuario>();
             modelBuilder.Entity<Parametro>();
-
+            
 
             //foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             //{
